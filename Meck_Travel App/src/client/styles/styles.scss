@@ -6,10 +6,10 @@ $primary-color: rgb(51, 51, 51);
 
 
 body {
-    width: 960px;
+    // width: 960px;
     padding: 25px;
     display: grid;
-    grid-template-columns: 1fr;
+    grid-template-columns: 100%;
     grid-template-rows: 80px auto 50px;
     grid-template-areas: 
         'header'
@@ -31,9 +31,9 @@ body {
     background-color: #235a86;
 }
 
-#header-title {
+h1 {
     font-family: $headline-font;
-    font-size: 50px;
+    font-size: 2.5em;
 }
 
 #content {
@@ -65,9 +65,9 @@ button {
 }
 
 #output-info {
-    display: grid;
-       grid-template-columns: repeat(2, 1fr);
-       grid-gap: 2em;
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: center;
 }
 
 #trip-details {
@@ -78,7 +78,7 @@ button {
 .info-box {
     display: flex;
     flex-flow: column wrap;
-    width: auto;
+    // width: auto;
     border-style: double;
     
 }
@@ -86,7 +86,7 @@ button {
 #photo-box {
     display: flex;
     flex-direction: column;
-    width: auto;
+    // width: auto;
 }
 
 .info-header {
@@ -108,7 +108,7 @@ button {
 }
 
 img {
-    max-width: 450px;
+    max-width: 100%;
     height: auto;
 }
 
@@ -117,4 +117,47 @@ img {
     grid-area: footer;
     background-color: #235a86;
     color: white;
+}
+
+/* Medium Screens */
+@media (min-width: 600px) and (max-width:900px) {
+    body {
+        // width: 960px;
+        padding: 25px;
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-template-rows: 80px auto 50px;
+        grid-template-areas: 
+            'header'
+            'main'
+            'footer';
+    }
+
+    #output-info {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-gap: 2em;
+    }
+}
+  
+/* Large Screens */
+@media (min-width:901px) {
+    body {
+        // width: 960px;
+        padding: 25px;
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-template-rows: 80px auto 50px;
+        grid-template-areas: 
+            'header'
+            'main'
+            'footer';
+    }
+
+    #output-info {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-gap: 2em;
+    }
+
 }
