@@ -16,8 +16,6 @@ const mainFunction = async () => {
   .then (updateUI);
 };
 
-// `http://api.geonames.org/searchJSON?q=${city}&maxRows=1&username=${username}`
-
 
 /* Function to get data object and update UI */
 const updateUI = async () => {
@@ -86,13 +84,15 @@ function timeToTrip() {
 }
 
 function newImage(src){
-    // <img src="-images/three_trees_logo2.svg" alt="Three trees logo" />
-    // const pic = document.getElementById('photo-box');
-    // const picToAdd = newImage(tripInfo.picURL);
     const newImg = document.createElement('img');
     newImg.src = src;
-    document.getElementById('photo-box').appendChild(newImg);
-    // return newImg;
+    newImg.id = 'new-image'
+    if (document.getElementById('new-image')) { 
+          const old = (document.getElementById('new-image'));
+          const parent = document.getElementById('trip-photo');
+          parent.replaceChild(newImg, old);
+       }
+    else {document.getElementById('trip-photo').appendChild(newImg);}
 };
 
 
