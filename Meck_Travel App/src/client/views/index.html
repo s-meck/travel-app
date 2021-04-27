@@ -24,8 +24,8 @@
                     <form>
                         <p class="question">What day will you leave?</p>
                         <div class="date-picker">
-                            <select id="day-dropdown"></select>
-                            <select id="month-dropdown">
+                            <select class="date-box" id="day-dropdown"></select>
+                            <select class="date-box" id="month-dropdown">
                                 <option selected>01</option>
                                 <option>02</option>
                                 <option>03</option>
@@ -39,7 +39,7 @@
                                 <option>11</option>
                                 <option>12</option>
                             </select>
-                            <select id="year-dropdown"></select>
+                            <select class="date-box" id="year-dropdown"></select>
                         </div>
                     </form>
                 </div>
@@ -62,8 +62,9 @@
                 <!-- v end of trip details div  -->    
                 </div>
                 <div id='photo-box'>
-                    <div class='info-header'>CHECK IT OUT</div>
+                    <div class='info-header' id='pic-info'></div>
                     <div id='trip-photo'>
+                        <img id='dest-photo'/>
                         <!-- <img src="/src/client/media/c.jpg" alt="a snapshot of your destination"/> -->
                     </div>
                 </div>
@@ -79,6 +80,15 @@
 
         <!-- end of footer div -->
         </div> 
-    <!-- <script src="app.js" type="text/javascript"></script> -->
+        <!-- Adding service workers -->
+        <script>
+            // Check that service workers are supported
+            if ('serviceWorker' in navigator) {
+                // Use the window load event to keep the page load performant
+                window.addEventListener('load', () => {
+                    navigator.serviceWorker.register('/service-worker.js');
+                });
+            }
+        </script>
     </body>
 </html>

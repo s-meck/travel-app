@@ -2,7 +2,7 @@
 
 $main-font: 'Poppins', sans-serif;
 $headline-font: 'Train One', serif;
-$primary-color: rgb(51, 51, 51);
+$primary-color: rgb(245, 147, 67);
 
 
 body {
@@ -36,13 +36,17 @@ h1 {
     font-size: 2.5em;
 }
 
+p {
+    font-weight: bold;
+}
+
 #content {
     padding: 15px;
     grid-area: main; 
     display: flex;
     flex-direction: column;
     border-style: dotted;
-    background-image: url("/src/client/media/back.jpg");
+    // background-image: url("/src/client/media/back.jpg");
     background-repeat: no-repeat;
     background-size: cover;
     background-color: #ffffff;
@@ -54,14 +58,49 @@ h1 {
     background-color: rgb(231, 243, 253);
 }
 
-button {
-    background-color: $primary-color;
+input{
+    background-color: white;
+    height: 24px;
+    color: rgb(148, 212, 255);
     border: none;
-    padding: 10px;
+    padding-left: 5px;
+    margin-left: 5px;
+
+    &:hover {
+        background-color: $primary-color;
+        color: white;
+    }
+}
+
+#date {
+    margin-bottom: 10px;
+}
+
+.date-box {
+    background-color: white;
+    height: 24px;
+    color: rgb(148, 212, 255);
+    border: none;
+
+    &:hover {
+        background-color: $primary-color;
+        color: white;
+    }
+}
+
+button {
+    background-color: white;
+    border: none;
+    padding: 8px;
     margin: 20 0 15 0;
     border-radius: 4px;
-    color: white;
+    color: rgb(148, 212, 255);
 
+    &:hover {
+        background-color: $primary-color;
+        color: white;
+        font-weight: bold;
+    }
 }
 
 #output-info {

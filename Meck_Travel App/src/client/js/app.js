@@ -1,3 +1,5 @@
+import fetch from "node-fetch";
+
 const tripInfo = {
   city: '',
   daysToTrip: '',
@@ -19,20 +21,10 @@ const mainFunction = async () => {
 
 /* Function to get data object and update UI */
 const updateUI = async () => {
-  newImage(tripInfo.picURL);
+  newImage(tripInfo.picURL, tripInfo.countryPic);
   document.getElementById('days-left').innerHTML = (tripInfo.daysToTrip+' days to go!');
   document.getElementById('country').innerHTML = (tripInfo.country);  
   document.getElementById('weather').innerHTML = (tripInfo.weather);
-
-  // const request = await fetch('/all');
-  // try{
-  //   const allData = await request.json();
-  //   document.getElementById('date').innerHTML = ('Checked: '+allData.date);
-  //   document.getElementById('temp').innerHTML = ('Temperature in Fahrenheit = '+allData.temperature);
-  //   document.getElementById('content').innerHTML = ('Your thoughts: '+allData.userResponse);
-  // }catch(error){
-  //   console.log("error", error);
-  // }
 };
 
 // send info to the server to run the api call
@@ -49,10 +41,10 @@ const postData = async (url = '', apiInfo = {})=>{
       const newInfo = await response.json();
       console.log(newInfo);
         tripInfo.picURL = newInfo.picURL;
+        tripInfo.countryPic = newInfo.countryPic;
         tripInfo.country = newInfo.country;
         tripInfo.highTemp = newInfo.highTemp;
         tripInfo.weather = newInfo.weather;
-        // console.log(tripInfo);
   }
   catch(error) {
   console.log("error", error);
@@ -83,17 +75,55 @@ function timeToTrip() {
                + tripInfo.daysToTrip);
 }
 
-function newImage(src){
-    const newImg = document.createElement('img');
-    newImg.src = src;
-    newImg.id = 'new-image'
-    if (document.getElementById('new-image')) { 
-          const old = (document.getElementById('new-image'));
-          const parent = document.getElementById('trip-photo');
-          parent.replaceChild(newImg, old);
-       }
-    else {document.getElementById('trip-photo').appendChild(newImg);}
+const newImage = (pic, cntryPic) => {
+  console.log(pic, cntryPic)
+    const img = document.getElementById('dest-photo');
+    if (pic === 'no photo') {
+        // console.log('this is a test')
+        document.getElementById('pic-info').innerHTML = ('No photo of this city is available. Here is a picture from the country instead');
+        img.src = cntryPic;
+    }
+    else {
+      // console.log('this is the second test');
+      document.getElementById('pic-info').innerHTML = ('A glimpse');
+      img.src = pic;
+    };
 };
 
+// const checkImage = async() => {
+//   const image = document.getElementById('trip-photo');
+//   image.removeChild(list.childNodes[0]);
+// }
+
+// const checkImage = async() =>{
+//   if (document.getElementById('new-image')) {
+//     var image = document.getElementById('trip-photo');
+//     image.removeChild(list.childNodes[0]);
+//   }
+//   else {console.log('There was no existing image to remove')}
+// };
+
+
+// const countryPic = async ( url = '', country = {}) => {
+//   // const postData = async (url = '', apiInfo = {})=>{
+//     console.log(country);
+//     const response = await fetch(url, {
+//     method: 'POST', 
+//     mode: 'cors',
+//     credentials: 'same-origin',
+//     headers: {'Content-Type': 'application/json',},
+//     body: JSON.stringify(country), 
+//   });
+//     try {
+//         const newInfo = await response.json();
+//         console.log(newInfo);
+//           tripInfo.countryPic = newInfo.countryPic;
+//     }
+//     catch(error) {
+//     console.log("error", error);
+//     };
+// };
 
 export { mainFunction }
+export { timeToTrip }
+export { newImage }
