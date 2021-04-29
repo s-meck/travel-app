@@ -27,9 +27,9 @@ const port = 8081;
 // startServ.server;
 
 // API Keys
-const geoNameID = process.env.GEONAMEID;
-const weatherbitID = process.env.WEATHERBIT;
-const pixabayID = process.env.PIXABAY;
+const geoNameID = 'sheila_meck';
+const weatherbitID = 'c5f7360426d84746b489b32e46bf5c27';
+const pixabayID = '20829812-17edcb83b701bc2d24742af2d';
 
 /* Dependencies */
 const fetch = require("node-fetch");
