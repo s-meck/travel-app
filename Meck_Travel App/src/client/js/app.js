@@ -61,7 +61,7 @@ function timeToTrip() {
     const day = document.getElementById('day-dropdown').value;
     const year = document.getElementById('year-dropdown').value;
     const month = document.getElementById('month-dropdown').value;
-    const startDate = (year+"-"+month+"-"+day);
+    const startDate = (year+"/"+month+"/"+day);
     const date1 = new Date(startDate)
     
     //Calculate difference between the dates
@@ -70,7 +70,7 @@ function timeToTrip() {
     tripInfo.daysToTrip = Math.floor(dayDifference / 0.5) * 0.5;
 
     console.log("Total number of days between dates "
-               + shortDate + "and " 
+               + shortDate + " and " 
                + startDate + " is: " 
                + tripInfo.daysToTrip);
 }

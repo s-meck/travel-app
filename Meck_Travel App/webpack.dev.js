@@ -10,6 +10,7 @@ module.exports = {
         libraryTarget: 'var',
         library: 'Client'
     },
+
     mode: 'development',
     devtool: 'source-map',
     stats: 'verbose',
