@@ -65,14 +65,21 @@ function timeToTrip() {
     const date1 = new Date(startDate)
     
     //Calculate difference between the dates
-    var timeDifference = date1.getTime() - date2.getTime();
-    var dayDifference = timeDifference / (1000 * 3600 * 24);
-    tripInfo.daysToTrip = Math.floor(dayDifference / 0.5) * 0.5;
+    const timeDifference = date1.getTime() - date2.getTime();
+    const dayDifference = timeDifference / (1000 * 3600 * 24);
+    tripInfo.daysToTrip = Math.ceil(dayDifference);
 
-    console.log("Total number of days between dates "
+    // Check if the date has passed
+    if ( tripInfo.daysToTrip < 0) {
+      alert("Sorry, please select a day in the future!")
+      throw new Error("This date has already passed.")
+    }
+    else {
+      console.log("Total number of days between dates "
                + shortDate + " and " 
                + startDate + " is: " 
                + tripInfo.daysToTrip);
+    }
 }
 
 const newImage = (pic, cntryPic) => {
@@ -90,39 +97,6 @@ const newImage = (pic, cntryPic) => {
     };
 };
 
-// const checkImage = async() => {
-//   const image = document.getElementById('trip-photo');
-//   image.removeChild(list.childNodes[0]);
-// }
-
-// const checkImage = async() =>{
-//   if (document.getElementById('new-image')) {
-//     var image = document.getElementById('trip-photo');
-//     image.removeChild(list.childNodes[0]);
-//   }
-//   else {console.log('There was no existing image to remove')}
-// };
-
-
-// const countryPic = async ( url = '', country = {}) => {
-//   // const postData = async (url = '', apiInfo = {})=>{
-//     console.log(country);
-//     const response = await fetch(url, {
-//     method: 'POST', 
-//     mode: 'cors',
-//     credentials: 'same-origin',
-//     headers: {'Content-Type': 'application/json',},
-//     body: JSON.stringify(country), 
-//   });
-//     try {
-//         const newInfo = await response.json();
-//         console.log(newInfo);
-//           tripInfo.countryPic = newInfo.countryPic;
-//     }
-//     catch(error) {
-//     console.log("error", error);
-//     };
-// };
 
 export { mainFunction }
 export { timeToTrip }
