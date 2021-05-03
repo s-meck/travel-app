@@ -67,7 +67,10 @@ function timeToTrip() {
     //Calculate difference between the dates
     const timeDifference = date1.getTime() - date2.getTime();
     const dayDifference = timeDifference / (1000 * 3600 * 24);
-    tripInfo.daysToTrip = Math.ceil(dayDifference);
+    tripInfo.daysToTrip = dayDifference;
+    // console.log(dayDifference);
+    // tripInfo.daysToTrip = Math.abs(Math.ceil(dayDifference));
+    // console.log(tripInfo.daysToTrip);
 
     // Check if the date has passed
     if ( tripInfo.daysToTrip < 0) {
